@@ -3,126 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tabela de Frutas</title>
+    <title>Tabelas de Alimentos</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Tabela de Frutas</h1>
-    <table>
-      <tr>
-        <th>Fruta</th>
-        <th>Gramas consumidas por dia</th>
-        <th>Vezes que pode consumir por dia</th>
-      </tr>
-      <tr>
-        <td>Maçã</td>
-        <td>150g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Banana</td>
-        <td>120g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Laranja</td>
-        <td>130g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Morango</td>
-        <td>100g</td>
-        <td>2 vezes</td>
-      </tr>
-      <tr>
-        <td>Uva</td>
-        <td>80g</td>
-        <td>2 vezes</td>
-      </tr>
-      <tr>
-        <td>Pera</td>
-        <td>140g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Manga</td>
-        <td>160g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Abacaxi</td>
-        <td>150g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Kiwi</td>
-        <td>90g</td>
-        <td>2 vezes</td>
-      </tr>
-      <tr>
-        <td>Melancia</td>
-        <td>200g</td>
-        <td>1 vez</td>
-      </tr>
-    </table>
+    <main>
+      <h1>Controle de alimentos</h1>
 
-    <h1>Tabela de Proteínas</h1>
-    <table>
-      <tr>
-        <th>Proteína</th>
-        <th>Gramas consumidas por dia</th>
-        <th>Vezes que pode consumir por dia</th>
-      </tr>
-      <tr>
-        <td>Frango</td>
-        <td>200g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Carne</td>
-        <td>180g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Peixe</td>
-        <td>160g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Ovo</td>
-        <td>120g</td>
-        <td>2 vezes</td>
-      </tr>
-      <tr>
-        <td>Feijão</td>
-        <td>150g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Tofu</td>
-        <td>140g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Atum</td>
-        <td>130g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Soja</td>
-        <td>100g</td>
-        <td>2 vezes</td>
-      </tr>
-      <tr>
-        <td>Queijo</td>
-        <td>90g</td>
-        <td>1 vez</td>
-      </tr>
-      <tr>
-        <td>Tilápia</td>
-        <td>170g</td>
-        <td>1 vez</td>
-      </tr>
-    </table>
+      <form id="form-alimento">
+        <h2>Adicionar alimento</h2>
+
+        <div class="campos-formulario">
+          <label>
+            Nome
+            <input id="nome" type="text" placeholder="Ex.: Mamão" required />
+          </label>
+
+          <label>
+            Categoria
+            <select id="categoria" required>
+              <option value="frutas">Fruta</option>
+              <option value="proteinas">Proteína</option>
+            </select>
+          </label>
+
+          <label>
+            Gramas por vez
+            <input id="gramas" type="number" min="1" placeholder="Ex.: 100" required />
+          </label>
+
+          <label>
+            Vezes por dia
+            <select id="vezes" required>
+              <option value="1">1 vez</option>
+              <option value="2">2 vezes</option>
+            </select>
+          </label>
+
+          <button type="submit">Adicionar</button>
+        </div>
+        <p id="mensagem" aria-live="polite"></p>
+      </form>
+
+      <section class="secao-tabela" data-categoria="frutas">
+        <h2>Tabela de Frutas</h2>
+        <div class="controles">
+          <label>
+            Filtrar por consumo:
+            <select class="filtro-consumo">
+              <option value="todos">Todos</option>
+              <option value="1">1 vez</option>
+              <option value="2">2 vezes</option>
+            </select>
+          </label>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Fruta</th>
+                <th><button class="ordenar-gramas" type="button">Gramas por vez ↕</button></th>
+                <th>Consumo por dia</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="total"></p>
+      </section>
+
+      <section class="secao-tabela" data-categoria="proteinas">
+        <h2>Tabela de Proteínas</h2>
+        <div class="controles">
+          <label>
+            Filtrar por consumo:
+            <select class="filtro-consumo">
+              <option value="todos">Todos</option>
+              <option value="1">1 vez</option>
+              <option value="2">2 vezes</option>
+            </select>
+          </label>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Proteína</th>
+                <th><button class="ordenar-gramas" type="button">Gramas por vez ↕</button></th>
+                <th>Consumo por dia</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="total"></p>
+      </section>
+    </main>
+
+    <script src="Script.js"></script>
   </body>
 </html>
